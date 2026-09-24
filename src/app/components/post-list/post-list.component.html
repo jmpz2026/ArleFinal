@@ -1,0 +1,27 @@
+<h2>Publicaciones</h2>
+
+@if (aviso()) {
+  <p class="aviso">{{ aviso() }}</p>
+}
+
+@if (cargando()) {
+  <p class="cargando">Cargando publicaciones...</p>
+} @else if (error()) {
+  <p class="error">{{ error() }}</p>
+} @else {
+  <ul class="lista">
+    @for (post of posts(); track post.id) {
+      <li class="tarjeta">
+        <span class="etiqueta">#{{ post.id }}</span>
+        <strong>{{ post.title }}</strong>
+        <div class="acciones">
+          <a [routerLink]="['/posts', post.id]">Ver</a>
+          <a [routerLink]="['/posts', post.id, 'editar']">Editar</a>
+          <button type="button" class="peligro" (click)="eliminar(post.id!)">Eliminar</button>
+        </div>
+      </li>
+    } @empty {
+      <li>No hay publicaciones todavía.</li>
+    }
+  </ul>
+}

@@ -1,0 +1,27 @@
+<a routerLink="/posts">&larr; Volver al listado</a>
+
+@if (cargando()) {
+  <p class="cargando">Cargando publicación y comentarios...</p>
+} @else if (error()) {
+  <p class="error">{{ error() }}</p>
+} @else if (post(); as p) {
+  <article class="tarjeta detalle">
+    <span class="etiqueta">#{{ p.id }} · usuario {{ p.userId }}</span>
+    <h2>{{ p.title }}</h2>
+    <p>{{ p.body }}</p>
+    <a [routerLink]="['/posts', p.id, 'editar']">Editar</a>
+  </article>
+
+  <h3>Comentarios ({{ comentarios().length }})</h3>
+  <ul class="lista">
+    @for (c of comentarios(); track c.id) {
+      <li class="tarjeta">
+        <strong>{{ c.name }}</strong>
+        <small>{{ c.email }}</small>
+        <p>{{ c.body }}</p>
+      </li>
+    } @empty {
+      <li>Esta publicación no tiene comentarios.</li>
+    }
+  </ul>
+}

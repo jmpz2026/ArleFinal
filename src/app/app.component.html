@@ -1,0 +1,11 @@
+<header class="barra">
+  <h1>Gestor de Publicaciones</h1>
+  <nav>
+    <a routerLink="/posts" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+    <a routerLink="/posts/nuevo" routerLinkActive="activo">Nueva publicación</a>
+  </nav>
+</header>
+
+<main class="contenido">
+  <router-outlet />
+</main>

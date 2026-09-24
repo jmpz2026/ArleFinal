@@ -1,0 +1,88 @@
+/* Estilos globales sencillos para que la demo se vea ordenada */
+:root {
+  --primario: #4f46e5;
+  --peligro: #dc2626;
+  --exito: #15803d;
+  --fondo: #f5f5f7;
+  --borde: #e2e2e8;
+  --texto: #1f2937;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: var(--primario);
+  color: white;
+}
+
+.barra h1 { margin: 0; font-size: 1.4rem; }
+.barra nav { display: flex; gap: 1rem; }
+.barra a { color: white; text-decoration: none; opacity: 0.8; }
+.barra a.activo { opacity: 1; font-weight: bold; text-decoration: underline; }
+
+.contenido { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+
+a { color: var(--primario); }
+
+.lista { list-style: none; padding: 0; display: grid; gap: 0.75rem; }
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+.tarjeta h2, .tarjeta p { margin: 0; }
+.tarjeta.detalle { margin: 1rem 0; }
+.etiqueta { font-size: 0.8rem; color: #6b7280; }
+
+.acciones { display: flex; align-items: center; gap: 1rem; }
+
+button {
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--primario);
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.peligro { background: var(--peligro); }
+
+.formulario { display: grid; gap: 0.75rem; max-width: 600px; }
+.formulario label { display: grid; gap: 0.3rem; font-weight: 600; }
+
+input, textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.error { color: var(--peligro); }
+.cargando { color: #6b7280; font-style: italic; }
+
+.aviso {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  background: #dcfce7;
+  color: var(--exito);
+}

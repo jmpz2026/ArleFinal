@@ -1,0 +1,36 @@
+<h2>{{ postId ? 'Editar publicación #' + postId : 'Nueva publicación' }}</h2>
+
+@if (cargando()) {
+  <p class="cargando">Cargando publicación...</p>
+} @else {
+  <form class="formulario" [formGroup]="form" (ngSubmit)="guardar()">
+    <label>
+      Título
+      <input type="text" formControlName="title">
+    </label>
+
+    @if (form.controls.title.invalid && form.controls.title.touched) {
+      <small class="error">El título debe tener al menos 4 caracteres.</small>
+    }
+
+    <label>
+      Contenido
+      <textarea rows="6" formControlName="body"></textarea>
+    </label>
+
+    @if (form.controls.body.invalid && form.controls.body.touched) {
+      <small class="error">El contenido es obligatorio.</small>
+    }
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    <div class="acciones">
+      <button type="submit" [disabled]="form.invalid || guardando()">
+        {{ guardando() ? 'Guardando...' : 'Guardar' }}
+      </button>
+      <a routerLink="/posts">Cancelar</a>
+    </div>
+  </form>
+}
